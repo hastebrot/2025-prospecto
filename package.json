@@ -1,0 +1,10 @@
+{
+  "name": "prospecto",
+  "private": true,
+  "workspaces": [
+    "sources/*"
+  ],
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

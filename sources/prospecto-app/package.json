@@ -1,0 +1,15 @@
+{
+  "name": "@prospecto/prospecto-app",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.19"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
