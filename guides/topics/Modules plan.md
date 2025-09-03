@@ -1,0 +1,20 @@
+- PRO product module (investment)
+	- PRO1000 products
+	- PRO2000 tariffs (product variants, configurations)
+	- PRO3000 contracts (agreements)
+	- PRO4000 customers (contact persons)
+	- PRO5000 partners (sales persons, provisions, referral partner)
+	- PRO6000 assets (containers, items)
+- CON contact module (connections, relations)
+	- CON1000 persons (leads)
+	- CON2000 companies
+	- CON3000 tickets (cases, campaign, service, tracking)
+- FIN finance module (accounting)
+	- FIN1000 records (financial records, invoices, payments, receipts, bank statements)
+	- FIN2000 journal (journal entries, debit amount (soll, konto, account), credit amount (haben, gegenkonto, counter-account), balance (saldo), buyer/owner id, seller id, item id, receivable (debtors), payable (creditors))
+	- FIN3000 traces (audit trails, traces, batches, follow-up entries, initial entry, open items, payment schedule)
+	- FIN4000 postings (subledger postings, post period)
+- DOC document module
+	- DOC1000 documents
+- SET settings module
+	- SET1000 reference lists (nachschlagelisten, with predefined enum values, picklists, code lists)

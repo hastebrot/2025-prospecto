@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"2058751866aae4cf","x":-500,"y":-520,"width":1760,"height":580,"type":"group","label":"Product screen references"},
+		{"id":"440720b63a7b2da0","type":"file","file":"guides/topics/Screen reference/PRO1000 products.md","x":-480,"y":-480,"width":400,"height":520},
+		{"id":"fd9fb25c120b5586","type":"file","file":"guides/topics/Screen reference/PRO2000 tariffs.md","x":-40,"y":-480,"width":400,"height":520},
+		{"id":"c72c522f1f665f6e","type":"file","file":"guides/topics/Screen reference/PRO3000 contracts.md","x":400,"y":-480,"width":400,"height":520},
+		{"id":"824171c7ff74ffff","type":"file","file":"guides/topics/Screen reference/PRO4000 customers.md","x":840,"y":-480,"width":400,"height":520}
+	],
+	"edges":[]
+}
