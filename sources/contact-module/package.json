@@ -1,5 +1,5 @@
 {
-  "name": "@prospecto/accounting-module",
+  "name": "@prospecto/contact-module",
   "module": "index.ts",
   "type": "module",
   "private": true,

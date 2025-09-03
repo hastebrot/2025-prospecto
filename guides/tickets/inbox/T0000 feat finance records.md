@@ -1,8 +1,6 @@
-# story template
-
 | original estimate | estimate | actual effort | remaining effort |
 | --- | --- | --- | --- |
-| - | - | - | - |
+| 0h | - | - | - |
 
 **acceptance criteria:**
 
