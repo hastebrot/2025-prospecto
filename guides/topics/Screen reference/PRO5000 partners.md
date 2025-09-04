@@ -57,29 +57,29 @@ includeLinks: true
 | **Events** tab             | (German: Ereignisse)              |
 #### Brokered contracts tab
 
-| Column            | Description                     |
-| ----------------- | ------------------------------- |
-| **Product** field | (German: Produkt)               |
-|                   | (German: Tarif)                 |
-|                   | (German: Vertrags-Nr.)          |
-|                   | (German: Kunde)                 |
-|                   | (German: Abschlussdatum)        |
-|                   | (German: Ablauf Widerrufsfrist) |
-|                   | (German: Zeichn.-Summe)         |
+| Column                   | Description                     |
+| ------------------------ | ------------------------------- |
+| **Product** field        | (German: Produkt)               |
+| Tariff                   | (German: Tarif)                 |
+| Contract number          | (German: Vertrags-Nr.)          |
+| Customer                 | (German: Kunde)                 |
+| Contract date            | (German: Abschlussdatum)        |
+| Expiry withdrawal period | (German: Ablauf Widerrufsfrist) |
+| Contract amount          | (German: Zeichn.-Summe)         |
 
 #### Bank accounts tab
 
-| Column             | Description                 |
-| ------------------ | --------------------------- |
-| **Verified** field | (German: Verifiziert)       |
-|                    | (German: Sperrgrund)        |
-|                    | (German: IBAN)              |
-|                    | (German: BIC)               |
-|                    | (German: Bank)              |
-|                    | (German: Art)               |
-|                    | (German: Währung)           |
-|                    | (German: Konto-Nr.)         |
-|                    | (German: Bankleitzahl, BLZ) |
+| Column                | Description                 |
+| --------------------- | --------------------------- |
+| **Verified** field    | (German: Verifiziert)       |
+| Reason for suspension | (German: Sperrgrund)        |
+| IBAN                  | (German: IBAN)              |
+| BIC                   | (German: BIC)               |
+| Bank                  | (German: Bank)              |
+| Account type          | (German: Art)               |
+| Currency              | (German: Währung)           |
+| Account number        | (German: Konto-Nr.)         |
+| Bank code             | (German: Bankleitzahl, BLZ) |
 ### PRO50XX contact person create dialog
 #### Steps panel
 | Step             | Description              |

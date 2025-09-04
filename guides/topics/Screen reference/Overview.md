@@ -8,32 +8,32 @@ includeLinks: true
 ```
 ### Screens (Pages)
 
-| Screen                          | Description                                 |
-| ------------------------------- | ------------------------------------------- |
-| <br>Product module:             |                                             |
-| **[[PRO1000 products]]**        | The investment products. (German: Produkte) |
-| **[[PRO2000 tariffs]]**         | The variants of a product. (German: Tarife) |
-| **[[PRO3000 contracts]]**       | (German: Verträge, Zeichnungen)             |
-| **[[PRO4000 customers]]**       | (German: Kunden)                            |
-| **[[PRO5000 partners]]**        | (German: Vertriebspartner)                  |
-| **PRO6000 assets**              | (German: Anlagen)                           |
-| <br>Contact module:             |                                             |
-| **CON1000 persons**             | (German: Personen)                          |
-| **CON2000 companies**           | (German: Firmen, Unternehmen)               |
-| **CON3000 tickets**             | (German: Tickets, Vorgänge)                 |
-| <br>Finance module:             |                                             |
-| **FIN1000 transaction records** | (German: Geschäftsvorfälle)                 |
-| **[[FIN2000 journal entries]]** | (German: Verbuchungen, Buchungsliste)       |
-| <br>Document module:            |                                             |
-| **DOC1000 documents**           | (German: Dokumente)                         |
-| <br>Settings module:            |                                             |
-| **[[SET1000 reference lists]]** | (German: Nachschlagelisten)                 |
-| **SET2000 currencies**          | (German: Währungen)                         |
-| **SET3000 countries**           | (German: Länder)                            |
-| **SET4000 languages**           | (German: Sprachen)                          |
-| **SET5000 places**              | (German: Orte)                              |
-| **[[SET6000 banks]]**           | (German: Banken)                            |
-| **SET7000 tax offices**         | (German: Finanzämter)                       |
+| Screen                          | Description                                   |
+| ------------------------------- | --------------------------------------------- |
+| <br>Product module:             |                                               |
+| **[[PRO1000 products]]**        | The investment products. (German: Produkte)   |
+| **[[PRO2000 tariffs]]**         | The variants of a product. (German: Tarife)   |
+| **[[PRO3000 contracts]]**       | (German: Verträge, Zeichnungen)               |
+| **[[PRO4000 customers]]**       | (German: Kunden)                              |
+| **[[PRO5000 partners]]**        | (German: Vertriebspartner)                    |
+| **PRO6000 assets**              | (German: Anlagen)                             |
+| <br>Contact module:             |                                               |
+| **CON1000 persons**             | (German: Personen)                            |
+| **CON2000 companies**           | (German: Gesellschaften, Firmen, Unternehmen) |
+| **CON3000 tickets**             | (German: Tickets, Vorgänge)                   |
+| <br>Finance module:             |                                               |
+| **FIN1000 transaction records** | (German: Geschäftsvorfälle)                   |
+| **[[FIN2000 journal entries]]** | (German: Verbuchungen, Buchungsliste)         |
+| <br>Document module:            |                                               |
+| **DOC1000 documents**           | (German: Dokumente)                           |
+| <br>Settings module:            |                                               |
+| **[[SET1000 reference lists]]** | (German: Nachschlagelisten)                   |
+| **SET2000 currencies**          | (German: Währungen)                           |
+| **SET3000 countries**           | (German: Länder)                              |
+| **SET4000 languages**           | (German: Sprachen)                            |
+| **SET5000 places**              | (German: Orte)                                |
+| **[[SET6000 banks]]**           | (German: Banken)                              |
+| **SET7000 tax offices**         | (German: Finanzämter)                         |
 
 ### Organisms (Pagelets)
 
@@ -44,6 +44,7 @@ includeLinks: true
 | **Form** panel        | Panel which contains **Form title bar**, **Form toolbar**, **Summary area**, **Details area**.                                                              |
 | **Dialog** overlay    |                                                                                                                                                             |
 | **Sidepanel** overlay |                                                                                                                                                             |
+| <br>Dialogs:          |                                                                                                                                                             |
 | **Creation** dialog   | Dialog which contains **Create** button.                                                                                                                    |
 | **Report** dialog     | Dialog which contains **Run report** button.                                                                                                                |
 | **Processing** dialog | Dialog which contains **Progress area**, **Process status** toggle button bar (*processed*, *errors*, *warnings*, *remaining*, *total*), **Results table**. |
