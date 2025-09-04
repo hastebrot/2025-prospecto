@@ -56,10 +56,10 @@ includeLinks: true
 | Target amount     | (German: Ziel-Summe)                                                                                                               |
 | Transfer date     | (German: Vertrags-Übergang)                                                                                                        |
 #### Events tab
-| Column     | Description                                                                                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Event      (German: Ereignis)<br>- (German: Beleg)<br>- (German: Bericht)<br>- (German: Beschwerde)<br>- (German: Dokument, DMS)<br>- (German: E-Mail)<br>- (German: Fax) -  |
-| Subject    | (German: Betre                                                                                                                                                  |
-| Created on | (German: Erstellt                                                                                                                                               |
-| Created by | (German: Erstellt                                                                                                                                               |
-#### PRO10XX product events form
+| Column     | Description                                                                                                                                                                                                            |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Event      | (German: Ereignis)<br>- *Voucher* (German: Beleg)<br>- *Report* (German: Bericht)<br>- *Complaint* (German: Beschwerde)<br>- *Document* (German: Dokument, DMS)<br>- *Email* (German: E-Mail)<br>- *Fax* (German: Fax) |
+| Subject    | (German: Betreff)                                                                                                                                                                                                      |
+| Created on | (German: Erstellt am)                                                                                                                                                                                                  |
+| Created by | (German: Erstellt von)                                                                                                                                                                                                 |
+### PRO10XX product events form

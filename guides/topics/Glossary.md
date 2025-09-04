@@ -46,6 +46,9 @@ Translation tools:
 | Sales partners        | (German: Vertriebspartner, Vermittler, VP)                                                                                                                                                    |
 | Companies             | (German: Gesellschaften, GS)                                                                                                                                                                  |
 | Open items            | Alternative: open entries. In accounting, refers to outstanding receivables and payables, invoices or payments that have been recorded but are not yet settled. (German: Offene Posten, OPOS) |
+| Complaint             | (German: Beschwerde)                                                                                                                                                                          |
+| Claim                 | (German: Anspruch)                                                                                                                                                                            |
+
 ### User interface terminology
 
 | Term        | Description                                                      |

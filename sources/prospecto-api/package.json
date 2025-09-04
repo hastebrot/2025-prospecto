@@ -1,5 +1,5 @@
 {
-  "name": "@prospecto/prospecto-app",
+  "name": "@prospecto/prospecto-api",
   "module": "index.ts",
   "type": "module",
   "private": true,
