@@ -7,8 +7,8 @@
         "prettier": "^3.6.2",
       },
     },
-    "sources/accounting-module": {
-      "name": "@prospecto/accounting-module",
+    "sources/contact-module": {
+      "name": "@prospecto/contact-module",
       "devDependencies": {
         "@types/bun": "^1.2.19",
       },
@@ -16,8 +16,8 @@
         "typescript": "^5.8.3",
       },
     },
-    "sources/contacts-module": {
-      "name": "@prospecto/contacts-module",
+    "sources/finance-module": {
+      "name": "@prospecto/finance-module",
       "devDependencies": {
         "@types/bun": "^1.2.19",
       },
@@ -25,8 +25,8 @@
         "typescript": "^5.8.3",
       },
     },
-    "sources/investment-module": {
-      "name": "@prospecto/investment-module",
+    "sources/product-module": {
+      "name": "@prospecto/product-module",
       "devDependencies": {
         "@types/bun": "^1.2.19",
       },
@@ -34,8 +34,24 @@
         "typescript": "^5.8.3",
       },
     },
-    "sources/prospecto-app": {
-      "name": "@prospecto/prospecto-app",
+    "sources/prospecto-api": {
+      "name": "@prospecto/prospecto-api",
+      "devDependencies": {
+        "@restatedev/restate": "^1.4.4",
+        "@restatedev/restate-sdk": "^1.8.4",
+        "@restatedev/restate-sdk-clients": "^1.8.4",
+        "@restatedev/restate-sdk-zod": "^1.8.4",
+        "@restatedev/restate-server": "^1.4.4",
+        "@soapbox/logi": "npm:@jsr/soapbox__logi@0.3.0",
+        "@types/bun": "^1.2.21",
+        "@uwdata/flechette": "^2.1.0",
+      },
+      "peerDependencies": {
+        "typescript": "^5.9.2",
+      },
+    },
+    "sources/prospecto-ui": {
+      "name": "@prospecto/prospecto-ui",
       "devDependencies": {
         "@types/bun": "^1.2.19",
       },
@@ -45,19 +61,55 @@
     },
   },
   "packages": {
-    "@prospecto/accounting-module": ["@prospecto/accounting-module@workspace:sources/accounting-module"],
+    "@prospecto/contact-module": ["@prospecto/contact-module@workspace:sources/contact-module"],
 
-    "@prospecto/contacts-module": ["@prospecto/contacts-module@workspace:sources/contacts-module"],
+    "@prospecto/finance-module": ["@prospecto/finance-module@workspace:sources/finance-module"],
 
-    "@prospecto/investment-module": ["@prospecto/investment-module@workspace:sources/investment-module"],
+    "@prospecto/product-module": ["@prospecto/product-module@workspace:sources/product-module"],
 
-    "@prospecto/prospecto-app": ["@prospecto/prospecto-app@workspace:sources/prospecto-app"],
+    "@prospecto/prospecto-api": ["@prospecto/prospecto-api@workspace:sources/prospecto-api"],
+
+    "@prospecto/prospecto-ui": ["@prospecto/prospecto-ui@workspace:sources/prospecto-ui"],
+
+    "@restatedev/restate": ["@restatedev/restate@1.4.4", "", { "dependencies": { "@scarf/scarf": "^1.4.0" }, "optionalDependencies": { "@restatedev/restate-darwin-arm64": "1.4.4", "@restatedev/restate-darwin-x64": "1.4.4", "@restatedev/restate-linux-arm64": "1.4.4", "@restatedev/restate-linux-x64": "1.4.4" }, "bin": { "restate": "lib/index.js" } }, "sha512-GPkA1hgIboqVcJfC8w4M3AeqNGD+/2PK0tTZ/+ypYpv5m1t+r1sMqte7gwLJJQej4OzK8GPHNC7LrMWXubvA5Q=="],
+
+    "@restatedev/restate-darwin-arm64": ["@restatedev/restate-darwin-arm64@1.4.4", "", { "os": "darwin", "cpu": "arm64" }, "sha512-5zM+XwE6xzcXf1yucgjNQRKBgjmWOvxUmn6+vsQwCGP2uIcFNAPKNTE34iKf2FrxqN6qINAI8sqwS2ZQUUkPeQ=="],
+
+    "@restatedev/restate-darwin-x64": ["@restatedev/restate-darwin-x64@1.4.4", "", { "os": "darwin", "cpu": "x64" }, "sha512-UIfsXTuL7fI8VGRGF7Zo2ZzWbT88D7zw63SyBcC4sChWVBzn0KwM0seSQEsKIyQ+Aa39JlVTNeRJAVhKPdWobA=="],
+
+    "@restatedev/restate-linux-arm64": ["@restatedev/restate-linux-arm64@1.4.4", "", { "os": "linux", "cpu": "arm64" }, "sha512-xBLNzbNNDiG9JQBX6K8fm73MHerQ608Yl8fT4CE8IOdr5m5+5mX8PGim8EqDFm6eDL2f7rzipgwqqYYmeScCuQ=="],
+
+    "@restatedev/restate-linux-x64": ["@restatedev/restate-linux-x64@1.4.4", "", { "os": "linux", "cpu": "x64" }, "sha512-VeOQeBw3f6mlqhvhistbT9z4aOjPnyKOjSHGwU88Mb9j27L7098PXYzuFBf2SUw4kSOVTiYg+em6i4lowr8ZPg=="],
+
+    "@restatedev/restate-sdk": ["@restatedev/restate-sdk@1.8.4", "", { "dependencies": { "@restatedev/restate-sdk-core": "^1.8.4" } }, "sha512-ZnGDu4wqIR9fRM9O4KzcJj4TMpF3vrzQwhk5Ss5JszFLLLRrmfRWFemJ2foduJQGTfzbF1Sk7pyrZPk4PY56EQ=="],
+
+    "@restatedev/restate-sdk-clients": ["@restatedev/restate-sdk-clients@1.8.4", "", { "dependencies": { "@restatedev/restate-sdk-core": "^1.8.4" } }, "sha512-1Unp7Kk5bj+Rq/nyyHhXSFI6aBTSpbHNzs1MIsKnAuAFGwt5EhhOurdnAopxhdx59V3hT6gsQmeOZU9b0oj0gA=="],
+
+    "@restatedev/restate-sdk-core": ["@restatedev/restate-sdk-core@1.8.4", "", {}, "sha512-fhK1TCdO0NXVmmFhlycu5SbkJai37aT/jFBLjV/4ZcRRVGlyu+ltdCA0xuMJoLxF7htkLxb4jzr7rLAiCBNMUw=="],
+
+    "@restatedev/restate-sdk-zod": ["@restatedev/restate-sdk-zod@1.8.4", "", { "dependencies": { "zod": "^3.24.1", "zod-to-json-schema": "3.24.3" } }, "sha512-tOSu8CeJbxsv1r6lOf2J8p8mJcnRAUkW9zT5/0+FuWqK3vAEAQQnpzMklY7s9pM0LU18d5ET+iB0yzrbXc9dHQ=="],
+
+    "@restatedev/restate-server": ["@restatedev/restate-server@1.4.4", "", { "dependencies": { "@scarf/scarf": "^1.4.0" }, "optionalDependencies": { "@restatedev/restate-server-darwin-arm64": "1.4.4", "@restatedev/restate-server-darwin-x64": "1.4.4", "@restatedev/restate-server-linux-arm64": "1.4.4", "@restatedev/restate-server-linux-x64": "1.4.4" }, "bin": { "restate-server": "lib/index.js" } }, "sha512-TSA43wMwfK49QTTkJxnTmS1/QGvegQ2Rd2rrMoV9uCkY2RFQPbXVT61GQatd2DAiInsPgKvgO/cQH8sg9+27KA=="],
+
+    "@restatedev/restate-server-darwin-arm64": ["@restatedev/restate-server-darwin-arm64@1.4.4", "", { "os": "darwin", "cpu": "arm64" }, "sha512-Q9nSHj2a7mh2Cg/Jcwy+VWu6yGTVs2Dgr8PU7cEYRuXp66Dxn8THcWcoSGnJrWGO2NwOtLu3w64k4nZDOjKjqw=="],
+
+    "@restatedev/restate-server-darwin-x64": ["@restatedev/restate-server-darwin-x64@1.4.4", "", { "os": "darwin", "cpu": "x64" }, "sha512-MhQwnscNRnEgVcEDMF6MvPNjP4dVgymNfVzUxPAfTqhYlfGygk9qtfCyBZiKGX36CMZSUyexKdSVvf8KbX3MkA=="],
+
+    "@restatedev/restate-server-linux-arm64": ["@restatedev/restate-server-linux-arm64@1.4.4", "", { "os": "linux", "cpu": "arm64" }, "sha512-n5Y6VfJf30SuuiQS1/jUt+f7TUJvRzDWXv6R6IUi42ZcVcRRhHsrETqHxTNQwaUCnIaNGZJmVF3sMJLs+zc/gA=="],
+
+    "@restatedev/restate-server-linux-x64": ["@restatedev/restate-server-linux-x64@1.4.4", "", { "os": "linux", "cpu": "x64" }, "sha512-G1Y7rXZNO2Mn+cu4ON1J8srnKv5rOUtQyN7fbPS6/tABrTeFTrUGyCzJPcF9SVBsgnUX67vr6OdUpm7+67sP8g=="],
+
+    "@scarf/scarf": ["@scarf/scarf@1.4.0", "", {}, "sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ=="],
+
+    "@soapbox/logi": ["@jsr/soapbox__logi@0.3.0", "https://npm.jsr.io/~/11/@jsr/soapbox__logi/0.3.0.tgz", {}, "sha512-HKmhcwvib2FgFCsfhho2WaP1u/kfQ9aarjsiUAA4DRVme1DvBvPJpaLuuTDXAHSWzo5TB1wAVHkDp6yfO2FARQ=="],
 
     "@types/bun": ["@types/bun@1.2.21", "", { "dependencies": { "bun-types": "1.2.21" } }, "sha512-NiDnvEqmbfQ6dmZ3EeUO577s4P5bf4HCTXtI6trMc6f6RzirY5IrF3aIookuSpyslFzrnvv2lmEWv5HyC1X79A=="],
 
-    "@types/node": ["@types/node@24.3.0", "", { "dependencies": { "undici-types": "~7.10.0" } }, "sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow=="],
+    "@types/node": ["@types/node@24.3.1", "", { "dependencies": { "undici-types": "~7.10.0" } }, "sha512-3vXmQDXy+woz+gnrTvuvNrPzekOi+Ds0ReMxw0LzBiK3a+1k0kQn9f2NWk+lgD4rJehFUmYy2gMhJ2ZI+7YP9g=="],
 
     "@types/react": ["@types/react@19.1.12", "", { "dependencies": { "csstype": "^3.0.2" } }, "sha512-cMoR+FoAf/Jyq6+Df2/Z41jISvGZZ2eTlnsaJRptmZ76Caldwy1odD4xTr/gNV9VLj0AWgg/nmkevIyUfIIq5w=="],
+
+    "@uwdata/flechette": ["@uwdata/flechette@2.1.0", "", {}, "sha512-CsVgFIc94Rb5UhKvAK6E2rCFV+H6WkDzBEjYZvl2lfcI9vqLRafdngd9o5cq2lsA2offxCmJXdS1DE7ACPn33w=="],
 
     "bun-types": ["bun-types@1.2.21", "", { "dependencies": { "@types/node": "*" }, "peerDependencies": { "@types/react": "^19" } }, "sha512-sa2Tj77Ijc/NTLS0/Odjq/qngmEPZfbfnOERi0KRUYhT9R8M4VBioWVmMWE5GrYbKMc+5lVybXygLdibHaqVqw=="],
 
@@ -68,5 +120,9 @@
     "typescript": ["typescript@5.9.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A=="],
 
     "undici-types": ["undici-types@7.10.0", "", {}, "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="],
+
+    "zod": ["zod@3.25.76", "", {}, "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ=="],
+
+    "zod-to-json-schema": ["zod-to-json-schema@3.24.3", "", { "peerDependencies": { "zod": "^3.24.1" } }, "sha512-HIAfWdYIt1sssHfYZFCXp4rU1w2r8hVVXYIlmoa0r0gABLs5di3RCqPU5DDROogVz1pAdYBaz7HK5n9pSUNs3A=="],
   }
 }

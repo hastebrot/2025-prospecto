@@ -4,12 +4,22 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "bun test"
+    "main": "bun run src/main.ts",
+    "test": "bun test --env-file=.env.local",
+    "restate": "DO_NOT_TRACK=1 bun x --bun restate",
+    "restate-server": "DO_NOT_TRACK=1 bun x --bun restate-server"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.19"
+    "@restatedev/restate": "^1.4.4",
+    "@restatedev/restate-sdk": "^1.8.4",
+    "@restatedev/restate-sdk-clients": "^1.8.4",
+    "@restatedev/restate-sdk-zod": "^1.8.4",
+    "@restatedev/restate-server": "^1.4.4",
+    "@soapbox/logi": "npm:@jsr/soapbox__logi@0.3.0",
+    "@types/bun": "^1.2.21",
+    "@uwdata/flechette": "^2.1.0"
   },
   "peerDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   }
 }
