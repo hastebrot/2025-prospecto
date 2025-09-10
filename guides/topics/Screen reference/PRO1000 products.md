@@ -15,7 +15,7 @@ includeLinks: true
 | **Filter** toggle button  |             |
 | **Search** toggle button  |             |
 | **Create product** button |             |
-#### Listing table viev
+#### Listing table view
 
 | Column                     | Description |
 | -------------------------- | ----------- |

@@ -21,6 +21,7 @@ includeLinks: true
 | **CON1000 persons**             | (German: Personen)                            |
 | **CON2000 companies**           | (German: Gesellschaften, Firmen, Unternehmen) |
 | **CON3000 tickets**             | (German: Tickets, Vorgänge)                   |
+| **CON4000 projects**            | (German: Projekte)                            |
 | <br>Finance module:             |                                               |
 | **FIN1000 transaction records** | (German: Geschäftsvorfälle)                   |
 | **[[FIN2000 journal entries]]** | (German: Verbuchungen, Buchungsliste)         |
@@ -34,6 +35,7 @@ includeLinks: true
 | **SET5000 places**              | (German: Orte)                                |
 | **[[SET6000 banks]]**           | (German: Banken)                              |
 | **SET7000 tax offices**         | (German: Finanzämter)                         |
+
 
 ### Organisms (Pagelets)
 
@@ -55,9 +57,3 @@ includeLinks: true
 | ------------------- | ------------------------------------------ |
 | **Tablist** element |                                            |
 | **Card** element    | Element which contains title and fieldset. |
-
----
-* assign booking
-	* person data
-	* contract data
-	* booking suggestion

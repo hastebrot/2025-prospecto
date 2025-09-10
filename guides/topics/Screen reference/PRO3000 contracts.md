@@ -163,13 +163,13 @@ includeLinks: true
 | **Product** field            | (German: Produkt)                                                             |
 #### Share bookings tab
 
-| Column                   | Description            |
-| ------------------------ | ---------------------- |
-| **Posting date** field   | (German: Valutadatum). |
-| **Share type** field     | (German: Anteilsart)   |
-| **Share rate** field     | (German: Anteile)      |
-| **Purchase price** field | (German: Kaufpreis)    |
-| **Currency** field       | (German: Währung)      |
+| Column                   | Description           |
+| ------------------------ | --------------------- |
+| **Posting date** field   | (German: Valutadatum) |
+| **Share type** field     | (German: Anteilsart)  |
+| **Share rate** field     | (German: Anteile)     |
+| **Purchase price** field | (German: Kaufpreis)   |
+| **Currency** field       | (German: Währung)     |
 #### Provision tab
 
 | Column                    | Description                                    |
