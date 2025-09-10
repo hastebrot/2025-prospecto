@@ -1,0 +1,18 @@
+@import "tailwindcss" source(".");
+
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/roboto-mono/latin-400.css";
+@import "@fontsource/roboto-mono/latin-700.css";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: Roboto Mono, monospace;
+
+  --text-sm: 12px;
+  --text-sm--line-height: 14px;
+  --text-base: 14px;
+  --text-base--line-height: 18px;
+  --text-lg: 16px;
+  --text-lg--line-height: 22px;
+}
