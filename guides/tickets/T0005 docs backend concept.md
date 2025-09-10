@@ -3,8 +3,8 @@
 | 0h                | -        | -             | -                |
 
 **acceptance criteria:**
-- we have an API gateway
-- we have a UI frontend
+- API gateway is documented
+- API testing is documented
 
 **out of scope:**
 
@@ -19,8 +19,6 @@
 **dependencies:**
 
 **references:**
-* restate repo, https://github.com/restatedev/restate
-- restate typescript sdk, https://github.com/restatedev/sdk-typescript
 
 **attachments:**
 

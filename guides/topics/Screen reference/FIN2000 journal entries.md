@@ -19,18 +19,18 @@ includeLinks: true
 ### FIN2020 journal entry form
 #### Summary area
 
-| Element               | Description            |
-| --------------------- | ---------------------- |
-| <br>Booking card:     |                        |
-| **Date** field        | (German: Datum)        |
-|                       | (German: Valutadatum)  |
-|                       | (German: Betrag, Wert) |
-|                       | (German: Buchungstext) |
-| Booking details card: |                        |
-|                       | (German: Konto-Nr.)    |
-|                       | (German: BLZ)          |
-|                       | (German: Saldo)        |
-|                       | (German: Endsaldo)     |
+| Element                   | Description            |
+| ------------------------- | ---------------------- |
+| <br>Booking card:         |                        |
+| **Date** field            | (German: Datum)        |
+|                           | (German: Valutadatum)  |
+|                           | (German: Betrag, Wert) |
+|                           | (German: Buchungstext) |
+| <br>Booking details card: |                        |
+|                           | (German: Konto-Nr.)    |
+|                           | (German: BLZ)          |
+|                           | (German: Saldo)        |
+|                           | (German: Endsaldo)     |
 #### Details area
 
 | Tab | Description                           |
@@ -45,12 +45,12 @@ includeLinks: true
 | **Contract** step | (German: Vertragsdaten) |
 | **Booking** step  | (German: Verbuchung)    |
 
-| Element        | Description               |
-| -------------- | ------------------------- |
-| **Date** field | (German: Datum)           |
-|                | (German: Valutadatum)     |
-|                | (German: Betrag, Wert)    |
-|                | (German: Buchungstext)    |
+| Element        | Description            |
+| -------------- | ---------------------- |
+| **Date** field | (German: Datum)        |
+|                | (German: Valutadatum)  |
+|                | (German: Betrag, Wert) |
+|                | (German: Buchungstext) |
 
 #### Customer step
 
@@ -72,3 +72,10 @@ includeLinks: true
 |         | (German: Konto)             |
 |         | (German: Gegenkonto)        |
 |         | (German: Buchungstext)      |
+
+---
+* assign booking
+	* person data
+	* contract data
+	* booking suggestion
+* contracts chain or history

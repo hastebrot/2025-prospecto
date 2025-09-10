@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"c7adfe8bd6e30b30","type":"group","x":1280,"y":-840,"width":880,"height":2636,"color":"3"},
+		{"id":"864073c3e92a877c","type":"group","x":-760,"y":-840,"width":880,"height":2636,"color":"3"},
+		{"id":"5bb5d73e332dbcc4","type":"group","x":280,"y":-840,"width":840,"height":2636,"color":"3"},
+		{"id":"0907f5fb479ec90f","type":"group","x":2320,"y":-840,"width":880,"height":1328,"color":"3"},
+		{"id":"95687f151a7615b1","type":"file","file":"guides/topics/assets/xpecto-live/image2025-7-2_15-58-10.png","x":320,"y":-638,"width":739,"height":381},
+		{"id":"d7dc7ea08a40c469","type":"text","text":"# xpectoLive","x":320,"y":-790,"width":739,"height":60},
+		{"id":"e195c8b57f6ea485","type":"file","file":"guides/topics/assets/xpecto-pro/image2024-8-7_16-39-46.png","x":-700,"y":-80,"width":740,"height":454},
+		{"id":"74509e14525935f4","type":"file","file":"guides/topics/assets/xpecto-pro/image2024-8-7_16-41-36.png","x":-700,"y":480,"width":739,"height":452},
+		{"id":"17d85428edbddb7d","type":"file","file":"guides/topics/assets/xpecto-pro/image2024-8-7_16-45-4.png","x":-700,"y":1040,"width":740,"height":451},
+		{"id":"d0c605607ccdcd50","type":"file","file":"guides/topics/assets/xpecto-pro/image2024-8-7_16-26-27.png","x":-700,"y":-640,"width":740,"height":462},
+		{"id":"08f8ae3565941688","type":"text","text":"# xpectoPro","x":-700,"y":-790,"width":739,"height":60},
+		{"id":"17790d6067aa0926","type":"file","file":"guides/topics/assets/acumatica/Images_UIDev_DataEntryScreen_Example.png","x":1348,"y":-638,"width":754,"height":429},
+		{"id":"7b5b4f458bd65340","type":"file","file":"guides/topics/assets/acumatica/Images_UIG_ModernUI_Filtering_Area.png","x":1348,"y":-78,"width":753,"height":378},
+		{"id":"e28cf0e443d48da6","type":"file","file":"guides/topics/assets/acumatica/Images_UIG_ModernUI_Filters_List.png","x":1348,"y":488,"width":754,"height":439},
+		{"id":"5f946d13c857a3b0","type":"text","text":"# Adobe GenStudio","x":2400,"y":-790,"width":753,"height":60},
+		{"id":"bbf579c134a10f2c","type":"file","file":"guides/topics/assets/xpecto-live/image2025-7-2_15-58-31.png","x":320,"y":-78,"width":739,"height":382},
+		{"id":"21ac298524963828","type":"file","file":"guides/topics/assets/xpecto-live/image2025-7-2_16-55-38.png","x":320,"y":482,"width":740,"height":382},
+		{"id":"4fe9de52f2d28cac","type":"file","file":"guides/topics/assets/xpecto-live/image2025-7-2_16-58-42.png","x":320,"y":1042,"width":740,"height":383},
+		{"id":"61d399951d9a12b8","type":"text","text":"# Acumatica","x":1348,"y":-790,"width":753,"height":60},
+		{"id":"ca735d14d5137c51","type":"file","file":"guides/topics/assets/acumatica/Images_UIG_ModernUI_Quick_Filter.png","x":1348,"y":1042,"width":754,"height":591},
+		{"id":"895f8c6af51576a0","type":"file","file":"guides/topics/assets/adobe-genstudio/Screenshot 2025-08-28 180022.jpg","x":2400,"y":-638,"width":753,"height":471},
+		{"id":"894b6ba57f4a8dc0","type":"file","file":"guides/topics/assets/adobe-genstudio/Screenshot 2025-09-02 at 10.59.37.jpg","x":2400,"y":-80,"width":753,"height":471}
+	],
+	"edges":[
+		{"id":"cc365cab7fb975dd","fromNode":"895f8c6af51576a0","fromSide":"bottom","toNode":"894b6ba57f4a8dc0","toSide":"top"}
+	]
+}
