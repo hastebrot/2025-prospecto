@@ -29,8 +29,8 @@ export const UiSalesOrdersPage = () => {
 const NavigationLayout = () => {
   return (
     <div className="border-r border-(--border-base) bg-(--bg-layer) mr-4 flex flex-col gap-2 py-2">
-      <NavItem link="workspace">Workspace</NavItem>
-      <NavItem link="search">Search</NavItem>
+      <NavItem name="workspace">Workspace</NavItem>
+      <NavItem name="search">Search</NavItem>
       <NavItem>Finance</NavItem>
       <NavItem>Banking</NavItem>
       <NavItem>Payables</NavItem>
@@ -42,7 +42,7 @@ const NavigationLayout = () => {
   );
 };
 
-const NavItem = (props: { children?: React.ReactNode; isSelected?: boolean; link?: string }) => {
+const NavItem = (props: { children?: React.ReactNode; isSelected?: boolean; name?: string }) => {
   return (
     <div
       className={classNames(
@@ -50,13 +50,13 @@ const NavItem = (props: { children?: React.ReactNode; isSelected?: boolean; link
         "flex flex-col items-center gap-1 p-2",
       )}
     >
-      {props.link === undefined && (
+      {props.name === undefined && (
         <UiIcon name="circle" variant="outlined" height={22} strokeWidth={1.5 * (24 / 22)} />
       )}
-      {props.link === "workspace" && (
+      {props.name === "workspace" && (
         <UiIcon name="square" variant="outlined" height={22} strokeWidth={1.5 * (24 / 22)} />
       )}
-      {props.link === "search" && (
+      {props.name === "search" && (
         <UiIcon name="search" variant="outlined" height={22} strokeWidth={1.5 * (24 / 22)} />
       )}
       <div
@@ -78,10 +78,44 @@ const CollectionLayout = () => {
   };
 
   return (
-    <div className="flex flex-col min-w-[260px] _-mr-4">
-      <section className="p-4 pb-0 flex justify-between items-start">
+    <div className="flex flex-col min-w-[260px]">
+      <section className="p-4 pb-0 flex justify-between items-center">
         <div>
           <div className="text-lg">Sales Orders</div>
+        </div>
+        <div className="flex items-center -my-2 gap-2">
+          <div className="grid">
+            <UiIcon
+              name="square"
+              variant="outlined"
+              height={18}
+              strokeWidth={2}
+              className="text-(--fg-subtle) row-1 col-1"
+            />
+            <UiIcon
+              name="check"
+              variant="outlined"
+              height={12}
+              strokeWidth={2 * (24 / 12)}
+              className="text-(--fg-subtle) row-1 col-1 place-self-center"
+            />
+          </div>
+          <div className="grid">
+            <UiIcon
+              name="circle"
+              variant="outlined"
+              height={18}
+              strokeWidth={2}
+              className="text-(--fg-subtle) row-1 col-1 place-self-center"
+            />
+            <UiIcon
+              name="circle"
+              variant="filled"
+              height={8}
+              strokeWidth={2}
+              className="text-(--fg-subtle) row-1 col-1 place-self-center"
+            />
+          </div>
         </div>
       </section>
 
@@ -143,24 +177,28 @@ const ItemLayout = () => {
             SO 001253
             <TextSeparator />
             Agrilink Food
-            <div className="ml-2 flex items-center">
-              <UiIcon name="star" variant="outlined" height={15} strokeWidth={2 * (18 / 15)} />
-              <div className="grid">
-                <UiIcon
-                  name="star"
-                  variant="filled"
-                  height={15}
-                  strokeWidth={2 * (18 / 15)}
-                  className="row-1 col-1 text-(--bg-highlight)"
-                />
-                <UiIcon
-                  name="star"
-                  variant="outlined"
-                  height={15}
-                  strokeWidth={2 * (18 / 15)}
-                  className="row-1 col-1"
-                />
-              </div>
+            <div className="ml-2 -my-2 flex items-center">
+              <ToolbarButton hasIcon>
+                <UiIcon name="star" variant="outlined" height={15} strokeWidth={2 * (18 / 15)} />
+              </ToolbarButton>
+              <ToolbarButton hasIcon>
+                <div className="grid">
+                  <UiIcon
+                    name="star"
+                    variant="filled"
+                    height={15}
+                    strokeWidth={2 * (18 / 15)}
+                    className="row-1 col-1 text-(--bg-highlight)"
+                  />
+                  <UiIcon
+                    name="star"
+                    variant="outlined"
+                    height={15}
+                    strokeWidth={2 * (18 / 15)}
+                    className="row-1 col-1"
+                  />
+                </div>
+              </ToolbarButton>
             </div>
           </div>
         </div>
@@ -409,8 +447,8 @@ const ItemLayout = () => {
           <div className="py-2 uppercase">Shipments</div>
           <div className="py-2 uppercase">Risks</div>
           <div className="py-2 uppercase">Discounts</div>
-          <div className="py-2 uppercase">Commissions</div>
-          <div className="py-2 uppercase">Relations</div>
+          {/* <div className="py-2 uppercase">Commissions</div> */}
+          {/* <div className="py-2 uppercase">Relations</div> */}
           <div className="flex items-center">
             <UiIcon name="dots" variant="outlined" height={18} strokeWidth={2} />
           </div>
@@ -428,9 +466,6 @@ const ItemLayout = () => {
           <ToolbarButton>Line Details</ToolbarButton>
           <ToolbarButton>Item Availability</ToolbarButton>
           <ToolbarButton isDisabled>Configure</ToolbarButton>
-          <ToolbarButton hasIcon>
-            <UiIcon name="arrows-horizontal" variant="outlined" height={18} strokeWidth={2} />
-          </ToolbarButton>
         </div>
         <div className="h-[28px] flex items-center gap-4">
           <div className="h-[28px] flex items-center justify-between px-2 gap-2 bg-(--bg-base) border border-(--border-base) rounded-md">
@@ -783,8 +818,12 @@ export const FormLabel = (props: { children?: React.ReactNode; decoration?: stri
   return (
     <div
       className={classNames(
-        props.decoration &&
-          "bg-(--bg-highlight) rounded-l-md -mr-2.5 pr-2.5 -my-px py-px -ml-2 pl-2",
+        props.decoration && [
+          "bg-(--bg-highlight) rounded-l-md",
+          "-my-px py-px",
+          "-ml-2 pl-2",
+          "-mr-2.5 pr-2.5",
+        ],
       )}
     >
       <div
@@ -809,17 +848,22 @@ export const FormControl = ({
   decorateAs?: string;
 }) => {
   props.textAlign = props.textAlign ?? "left";
+
   return (
     <div
       className={classNames(
-        props.decorateAs &&
-          "bg-(--bg-highlight) rounded-r-md -ml-2.5 pl-2.5 -my-px py-px mr-px pr-px",
+        props.decorateAs && [
+          "bg-(--bg-highlight) rounded-r-md",
+          "-my-px py-px",
+          "-ml-2.5 pl-2.5",
+          "-mr-px pr-px",
+        ],
       )}
     >
       <div
         tabIndex={-1}
         className={classNames(
-          "h-[30px] flex items-center px-2 cursor-text",
+          "h-[30px] flex items-center px-2 cursor-text text-nowrap",
           props.isReadOnlyField && "border-b border-(--border-base) brightness-95",
           props.isSearchField &&
             "!justify-between bg-(--bg-base) border border-(--border-base) rounded-md",
