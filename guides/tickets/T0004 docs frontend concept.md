@@ -4,6 +4,7 @@
 
 **acceptance criteria:**
 - UI layouts are documented
+- UI components are documented
 - UI flow is documented
 - UI colors are documented
 - UI testing is documented

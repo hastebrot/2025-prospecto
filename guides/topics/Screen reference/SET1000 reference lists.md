@@ -26,6 +26,8 @@ includeLinks: true
 | **Title** field       | (German: Titel)        |
 | **Description** field | (German: Beschreibung) |
 
+(Field name, Display name / Field label, Data type, Display: boolean, Preview: boolean)
+
 #### Details area
 | Column             | Description            |
 | ------------------ | ---------------------- |
