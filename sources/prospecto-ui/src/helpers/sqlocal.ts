@@ -5,7 +5,7 @@ import { SQLocalKysely } from "sqlocal/kysely";
 export const createDatabaseWithSqlocal = <KyselyDatabase = unknown>(
   sqlocalConfig: SQLocalKysely["config"],
 ) => {
-  const { dialect, deleteDatabaseFile } = new SQLocalKysely(sqlocalConfig);
+  const { dialect, getDatabaseFile, deleteDatabaseFile } = new SQLocalKysely(sqlocalConfig);
   const db = new Kysely<KyselyDatabase>({
     dialect,
     plugins: [
@@ -17,5 +17,5 @@ export const createDatabaseWithSqlocal = <KyselyDatabase = unknown>(
     ],
   });
 
-  return { db, deleteDatabaseFile };
+  return { db, getDatabaseFile, deleteDatabaseFile };
 };
