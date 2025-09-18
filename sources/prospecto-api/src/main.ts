@@ -1,6 +1,6 @@
 import * as restate from "@restatedev/restate-sdk";
 import { z } from "zod";
-import { serde } from "./restate-sdk-zod/zod-serde.ts";
+import { serde } from "./restate-sdk-zod/restate-zod-serde.ts";
 import { sendNotification, sendReminder } from "./utils.ts";
 
 const Greeting = z.object({

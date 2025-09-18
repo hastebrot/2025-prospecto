@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { Profiler, useState, type CSSProperties } from "react";
 import { UiIcon } from "../../components/ui-icon";
 import { classNames } from "../../helpers/clsx";
 import { useDocumentTitle } from "../../helpers/react";
@@ -16,11 +16,13 @@ export const UiSalesOrdersPage = () => {
           "[scrollbar-color:var(--border-base)_var(--bg-base)]",
         )}
       >
-        <div className="grid grid-cols-[auto_auto_1fr] h-full">
-          <NavigationLayout />
-          <CollectionLayout />
-          <ItemLayout />
-        </div>
+        <RenderProfiler name="app">
+          <div className="grid grid-cols-[auto_auto_1fr] h-full">
+            <NavigationLayout />
+            <CollectionLayout />
+            <ItemLayout />
+          </div>
+        </RenderProfiler>
       </div>
     </Theme>
   );
@@ -68,6 +70,27 @@ const NavItem = (props: { children?: React.ReactNode; isSelected?: boolean; name
         {props.children}
       </div>
     </div>
+  );
+};
+
+const RenderProfiler = (props: { name: string; children?: React.ReactNode }) => {
+  const onRender = (
+    id: string,
+    phase: "mount" | "update" | "nested-update",
+    actualDuration: number,
+    baseDuration: number,
+  ) => {
+    console.log("on render:", id, {
+      phase,
+      actualMillis: actualDuration,
+      baseMillis: baseDuration,
+    });
+  };
+
+  return (
+    <Profiler id={props.name} onRender={onRender}>
+      {props.children}
+    </Profiler>
   );
 };
 
@@ -506,235 +529,237 @@ const ItemLayout = () => {
                 <TableColumn textAlign="right">Unit Price</TableColumn>
                 <TableColumn>Manual Price</TableColumn>
               </TableHeader>
-              <TableRow>
-                <TableCell noPadding>
-                  <div className="grid">
+              <TableBody>
+                <TableRow>
+                  <TableCell noPadding>
+                    <div className="grid">
+                      <UiIcon
+                        name="message-2"
+                        variant="filled"
+                        height={18}
+                        strokeWidth={2}
+                        className="row-1 col-1 text-(--bg-highlight)"
+                      />
+                      <UiIcon
+                        name="message-2"
+                        variant="outlined"
+                        height={18}
+                        strokeWidth={2}
+                        className="row-1 col-1"
+                      />
+                    </div>
+                  </TableCell>
+                  <TableCell noPadding>
+                    <div className="grid">
+                      <UiIcon
+                        name="file"
+                        variant="filled"
+                        height={18}
+                        strokeWidth={2}
+                        className="row-1 col-1 text-(--bg-highlight)"
+                      />
+                      <UiIcon
+                        name="file"
+                        variant="outlined"
+                        height={18}
+                        strokeWidth={2}
+                        className="row-1 col-1"
+                      />
+                    </div>
+                  </TableCell>
+                  <TableCell noPadding>
                     <UiIcon
-                      name="message-2"
-                      variant="filled"
-                      height={18}
-                      strokeWidth={2}
-                      className="row-1 col-1 text-(--bg-highlight)"
-                    />
-                    <UiIcon
-                      name="message-2"
+                      name="square"
                       variant="outlined"
                       height={18}
                       strokeWidth={2}
-                      className="row-1 col-1"
+                      className="text-(--fg-muted)"
                     />
-                  </div>
-                </TableCell>
-                <TableCell noPadding>
-                  <div className="grid">
+                  </TableCell>
+                  <TableCell>PRODWHOLE</TableCell>
+                  <TableCell>
+                    <span className="text-(--fg-accent) hover:underline">FOODBREAD</span>
+                  </TableCell>
+                  <TableCell noPadding>
                     <UiIcon
-                      name="file"
-                      variant="filled"
-                      height={18}
-                      strokeWidth={2}
-                      className="row-1 col-1 text-(--bg-highlight)"
-                    />
-                    <UiIcon
-                      name="file"
+                      name="square"
                       variant="outlined"
                       height={18}
                       strokeWidth={2}
-                      className="row-1 col-1"
+                      className="text-(--fg-muted)"
                     />
-                  </div>
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>PRODWHOLE</TableCell>
-                <TableCell>
-                  <span className="text-(--fg-accent) hover:underline">FOODBREAD</span>
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>RETAIL</TableCell>
-                <TableCell>Hot Dog Buns 8 PK (12per pack)</TableCell>
-                <TableCell>EA</TableCell>
-                <TableCell textAlign="right">50.00</TableCell>
-                <TableCell textAlign="right">50.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">34.65</TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell noPadding>
-                  <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>PRODWHOLE</TableCell>
-                <TableCell>
-                  <TextLink>FOODSUGAR</TextLink>
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>RETAIL</TableCell>
-                <TableCell>Sweet N Low Sugar 12pk</TableCell>
-                <TableCell>EA</TableCell>
-                <TableCell textAlign="right">25.00</TableCell>
-                <TableCell textAlign="right">25.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">55.42</TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell noPadding>
-                  <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>PRODWHOLE</TableCell>
-                <TableCell>
-                  <TextLink>FOODKCOF35</TextLink>
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>RETAIL</TableCell>
-                <TableCell>Coffee K-Cup Sampler Coffee 35 Count</TableCell>
-                <TableCell>EA</TableCell>
-                <TableCell textAlign="right">100.00</TableCell>
-                <TableCell textAlign="right">100.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">22.95</TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-              </TableRow>
-              <TableRow decorateAs="warning">
-                <TableCell noPadding>
-                  <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>PRODWHOLE</TableCell>
-                <TableCell>
-                  <TextLink>FOODTEA06</TextLink>
-                </TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-                <TableCell>RETAIL</TableCell>
-                <TableCell>Liptons Cold Brew Tea Bags 6 Pack</TableCell>
-                <TableCell>EA</TableCell>
-                <TableCell textAlign="right">
-                  <div className="w-full gap-2 flex items-center justify-between text-(--fg-highlight)">
+                  </TableCell>
+                  <TableCell>RETAIL</TableCell>
+                  <TableCell>Hot Dog Buns 8 PK (12per pack)</TableCell>
+                  <TableCell>EA</TableCell>
+                  <TableCell textAlign="right">50.00</TableCell>
+                  <TableCell textAlign="right">50.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">34.65</TableCell>
+                  <TableCell noPadding>
                     <UiIcon
-                      name="alert-triangle"
+                      name="square"
                       variant="outlined"
-                      height={15}
-                      strokeWidth={2 * (18 / 15)}
-                      className="text-(--fg-highlight)"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
                     />
-                    <span className="text-right">50.00</span>
-                  </div>
-                </TableCell>
-                <TableCell textAlign="right">50.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">0.00</TableCell>
-                <TableCell textAlign="right">24.88</TableCell>
-                <TableCell noPadding>
-                  <UiIcon
-                    name="square"
-                    variant="outlined"
-                    height={18}
-                    strokeWidth={2}
-                    className="text-(--fg-muted)"
-                  />
-                </TableCell>
-              </TableRow>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell noPadding>
+                    <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>PRODWHOLE</TableCell>
+                  <TableCell>
+                    <TextLink>FOODSUGAR</TextLink>
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>RETAIL</TableCell>
+                  <TableCell>Sweet N Low Sugar 12pk</TableCell>
+                  <TableCell>EA</TableCell>
+                  <TableCell textAlign="right">25.00</TableCell>
+                  <TableCell textAlign="right">25.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">55.42</TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell noPadding>
+                    <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>PRODWHOLE</TableCell>
+                  <TableCell>
+                    <TextLink>FOODKCOF35</TextLink>
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>RETAIL</TableCell>
+                  <TableCell>Coffee K-Cup Sampler Coffee 35 Count</TableCell>
+                  <TableCell>EA</TableCell>
+                  <TableCell textAlign="right">100.00</TableCell>
+                  <TableCell textAlign="right">100.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">22.95</TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                </TableRow>
+                <TableRow decorateAs="warning">
+                  <TableCell noPadding>
+                    <UiIcon name="message-2" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon name="file" variant="outlined" height={18} strokeWidth={2} />
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>PRODWHOLE</TableCell>
+                  <TableCell>
+                    <TextLink>FOODTEA06</TextLink>
+                  </TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                  <TableCell>RETAIL</TableCell>
+                  <TableCell>Liptons Cold Brew Tea Bags 6 Pack</TableCell>
+                  <TableCell>EA</TableCell>
+                  <TableCell textAlign="right">
+                    <div className="w-full gap-2 flex items-center justify-between text-(--fg-highlight)">
+                      <UiIcon
+                        name="alert-triangle"
+                        variant="outlined"
+                        height={15}
+                        strokeWidth={2 * (18 / 15)}
+                        className="text-(--fg-highlight)"
+                      />
+                      <span className="text-right">50.00</span>
+                    </div>
+                  </TableCell>
+                  <TableCell textAlign="right">50.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">0.00</TableCell>
+                  <TableCell textAlign="right">24.88</TableCell>
+                  <TableCell noPadding>
+                    <UiIcon
+                      name="square"
+                      variant="outlined"
+                      height={18}
+                      strokeWidth={2}
+                      className="text-(--fg-muted)"
+                    />
+                  </TableCell>
+                </TableRow>
+              </TableBody>
             </Table>
           </div>
         </Viewport>

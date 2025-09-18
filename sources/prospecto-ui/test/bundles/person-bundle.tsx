@@ -1,12 +1,12 @@
 import { type Compilable, Kysely } from "kysely";
 import { z } from "zod/v4";
 
-export type PostSchemas = inferSchemaMap<typeof Post.schemas>;
+export type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
 
-export const Post = {
+export const Person = {
   get schemas() {
     return {
-      post: z.strictObject({
+      person: z.strictObject({
         id: z.number().optional(),
         title: z.string(),
         body: z.string(),
@@ -16,8 +16,8 @@ export const Post = {
 
   get fixtures() {
     return {
-      post() {
-        return Post.schemas.post.parse({
+      person() {
+        return Person.schemas.person.parse({
           title: "title",
           body: "body",
         });
@@ -26,11 +26,11 @@ export const Post = {
   },
 
   get migrations() {
-    type PostSchemas = inferSchemaMap<typeof Post.schemas>;
+    type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
     return {
-      async v001_create_posts(db: Kysely<PostSchemas>) {
+      async v001_create_persons(db: Kysely<PersonSchemas>) {
         return await db.schema
-          .createTable("post")
+          .createTable("person")
           .addColumn("id", "integer", (it) => it.primaryKey().autoIncrement())
           .addColumn("title", "text", (it) => it.notNull())
           .addColumn("body", "text", (it) => it.notNull())
@@ -40,48 +40,48 @@ export const Post = {
   },
 
   get clients() {
-    type PostSchemas = inferSchemaMap<typeof Post.schemas>;
-    type WritePost = {
-      Params: { post: PostSchemas["post"] };
+    type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
+    type WritePerson = {
+      Params: { person: PersonSchemas["person"] };
     };
-    type ReadPost = {
-      Params: { postId: number };
+    type ReadPerson = {
+      Params: { personId: number };
     };
-    type ReadPosts = {
+    type ReadPersons = {
       Params: { limit?: number };
     };
     return {
-      async writePost(db: Kysely<PostSchemas>, params: WritePost["Params"]) {
-        const post = Post.schemas.post.parse(params.post);
+      async writePerson(db: Kysely<PersonSchemas>, params: WritePerson["Params"]) {
+        const person = Person.schemas.person.parse(params.person);
         await db
-          .insertInto("post")
-          .values(post)
-          .onConflict((it) => it.column("id").doUpdateSet(post))
+          .insertInto("person")
+          .values(person)
+          .onConflict((it) => it.column("id").doUpdateSet(person))
           .$call(debugSql)
           .execute();
         return {};
       },
 
-      async readPost(db: Kysely<PostSchemas>, params: ReadPost["Params"]) {
+      async readPerson(db: Kysely<PersonSchemas>, params: ReadPerson["Params"]) {
         const r = await db
-          .selectFrom("post")
-          .where("id", "=", params.postId)
+          .selectFrom("person")
+          .where("id", "=", params.personId)
           .select(["id", "title", "body"])
           .limit(1)
           .executeTakeFirstOrThrow();
-        const post = Post.schemas.post.parse(r);
-        return { post };
+        const person = Person.schemas.person.parse(r);
+        return { person };
       },
 
-      async readPosts(db: Kysely<PostSchemas>, params: ReadPosts["Params"]) {
+      async readPersons(db: Kysely<PersonSchemas>, params: ReadPersons["Params"]) {
         const r = await db
-          .selectFrom("post")
+          .selectFrom("person")
           .orderBy("id", "asc")
           .select(["id", "title", "body"])
           .$call((it) => (params.limit !== undefined ? it.limit(params.limit) : it))
           .execute();
-        const posts = Post.schemas.post.array().parse(r);
-        return { posts };
+        const persons = Person.schemas.person.array().parse(r);
+        return { persons };
       },
     };
   },

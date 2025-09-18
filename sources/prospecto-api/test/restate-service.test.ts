@@ -3,7 +3,7 @@ import * as clients from "@restatedev/restate-sdk-clients";
 import { logi } from "@soapbox/logi";
 import { beforeAll, describe, expect, it } from "bun:test";
 import { styleText } from "node:util";
-import { RestateTestEnvironment } from "./restateTestHelper";
+import { RestateTestEnvironment } from "../src/restate-sdk-test/restate-test-helper";
 
 const restateIngressAddr = process.env.RESTATE_INGRESS_ADDR ?? "localhost:8080";
 const restateAdminAddr = process.env.RESTATE_ADMIN_ADDR ?? "localhost:9070";

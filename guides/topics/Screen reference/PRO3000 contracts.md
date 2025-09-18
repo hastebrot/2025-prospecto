@@ -16,19 +16,19 @@ includeLinks: true
 | **Create contract** button | Opens the [[Contract create]] ([[PRD3030]]) dialog, in which you can create a new contract. |
 #### Listing table view
 
-| Column                     | Description              |
-| -------------------------- | ------------------------ |
-| **Product** column         |                          |
-| **Customer** column        |                          |
-| **Contract type** column   |                          |
-| **Contract number** column |                          |
-| **Search name** column     |                          |
-| **Status** column          |                          |
-| **Total amount** column    |                          |
-| **Contract date** column   | (German: Abschlussdatum) |
-| **Acceptance date** column | (German: Annahmedatum)   |
-| **Start date** column      | (German: Vertragsbeginn) |
-| **End date** column        | (German: Vertragsende)   |
+| Column                     | Description               |
+| -------------------------- | ------------------------- |
+| **Product** column         |                           |
+| **Customer** column        |                           |
+| **Contract type** column   | (German: Beteiligungsart) |
+| **Contract number** column |                           |
+| **Search name** column     | (German: Suchname)        |
+| **Status** column          |                           |
+| **Total amount** column    | (German: Zeichn.-Summe)   |
+| **Contract date** column   | (German: Abschlussdatum)  |
+| **Acceptance date** column | (German: Annahmedatum)    |
+| **Start date** column      | (German: Vertragsbeginn)  |
+| **End date** column        | (German: Vertragsende)    |
 #### Listing list view
 
 | Element                             | Description              |
@@ -54,12 +54,12 @@ includeLinks: true
 ### PRO3020 contract form
 
 #### Toolbar
-| Command                  | Description |
-| ------------------------ | ----------- |
-| **Close** button         |             |
-| **Add** dropdown button  |             |
-| **Report** button        |             |
-| **Actions** button       |             |
+| Command                 | Description |
+| ----------------------- | ----------- |
+| **Close** button        |             |
+| **Add** dropdown button |             |
+| **Report** button       |             |
+| **Actions** button      |             |
 #### Summary area
 | Element                             | Description                                                                                    |
 | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -131,6 +131,21 @@ includeLinks: true
 | **Balance number** column | (German: Saldonummer) |
 | **Description** column    | (German: Bezeichnung) |
 | **Balance amount** column | (German: Saldo)       |
+
+#### Values tab
+
+| Column   | Description           |
+| -------- | --------------------- |
+| Category | (German: Kategorie)   |
+| Kind     | (German: Art)         |
+|          | (German: Bezeichnung) |
+|          | (German: Art Zusatz)  |
+|          | (German: Betrag)      |
+|          | (German: Anlass)      |
+|          | (German: Valutadatum) |
+|          | (German: Periode)     |
+|          | (German: Veraltet)    |
+|          | (German: Verbucht)    |
 #### Bank account tab
 
 | Column                           | Description           |

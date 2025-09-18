@@ -21,13 +21,20 @@ import type {
 import { serde } from "@restatedev/restate-sdk";
 import { tableFromIPC } from "@uwdata/flechette";
 
+export const defaultSerde = <T>(): Serde<T> => {
+  return serde.json as Serde<T>;
+};
+
 export class RestateTestEnvironment {
-  constructor(readonly baseUrl: string, readonly adminAPIBaseUrl: string) {}
+  constructor(
+    readonly baseUrl: string,
+    readonly adminAPIBaseUrl: string,
+  ) {}
 
   // Create a handle that allows read/write of state under a given Virtual Object/Workflow key.
   public stateOf<TState extends TypedState = UntypedState>(
     service: VirtualObjectDefinition<string, unknown> | WorkflowDefinition<string, unknown>,
-    key: string
+    key: string,
   ): StateProxy<TState> {
     return new StateProxy(this.adminAPIBaseUrl, service.name, key);
   }
@@ -37,13 +44,13 @@ export class StateProxy<TState extends TypedState> {
   constructor(
     private adminAPIBaseUrl: string,
     private service: string,
-    private serviceKey: string
+    private serviceKey: string,
   ) {}
 
   // Read a single value from state under a given Virtual Object or Workflow key
   public async get<TValue, TKey extends keyof TState = string>(
     name: TState extends UntypedState ? string : TKey,
-    serde?: Serde<TState extends UntypedState ? TValue : TState[TKey]>
+    serde?: Serde<TState extends UntypedState ? TValue : TState[TKey]>,
   ): Promise<(TState extends UntypedState ? TValue : TState[TKey]) | null> {
     serde = serde ?? defaultSerde();
 
@@ -69,15 +76,15 @@ export class StateProxy<TState extends TypedState> {
       value: Uint8Array;
     }[];
 
-    if (table.length > 0) {
-      return serde.deserialize(table[0]!.value);
+    if (table[0] === undefined) {
+      return null;
     }
-    return null;
+    return serde.deserialize(table[0].value);
   }
 
   // Read all values from state under a given Virtual Object or Workflow key
   public async getAll<TValues extends TypedState>(
-    serde?: Serde<TState extends UntypedState ? TValues[keyof TValues] : TState[keyof TState]>
+    serde?: Serde<TState extends UntypedState ? TValues[keyof TValues] : TState[keyof TState]>,
   ): Promise<TState extends UntypedState ? TValues : TState> {
     serde = serde ?? defaultSerde();
 
@@ -86,7 +93,7 @@ export class StateProxy<TState extends TypedState> {
     return Object.fromEntries(
       items.map(({ key, value }) => {
         return [key, serde.deserialize(value)];
-      })
+      }),
     ) as TState extends UntypedState ? TValues : TState;
   }
 
@@ -122,7 +129,7 @@ export class StateProxy<TState extends TypedState> {
   public async set<TValue, TKey extends keyof TState = string>(
     name: TState extends UntypedState ? string : TKey,
     value: TState extends UntypedState ? TValue : TState[TKey],
-    serde?: Serde<TState extends UntypedState ? TValue : TState[TKey]>
+    serde?: Serde<TState extends UntypedState ? TValue : TState[TKey]>,
   ): Promise<void> {
     serde = serde ?? defaultSerde();
     const serialisedValue = serde.serialize(value);
@@ -139,16 +146,16 @@ export class StateProxy<TState extends TypedState> {
   // only that the mutation was submitted to Restate for processing.
   public async setAll<TValues extends TypedState>(
     values: TState extends UntypedState ? TValues : TState,
-    serde?: Serde<TState extends UntypedState ? TValues[keyof TValues] : TState[keyof TState]>
+    serde?: Serde<TState extends UntypedState ? TValues[keyof TValues] : TState[keyof TState]>,
   ) {
     serde = serde ?? defaultSerde();
 
     return this.setAllRaw(
       Object.entries<TState extends UntypedState ? TValues[keyof TValues] : TState[keyof TState]>(
-        values
+        values,
       ).map(([key, value]) => {
         return [key, serde.serialize(value)];
-      })
+      }),
     );
   }
 
@@ -164,13 +171,13 @@ export class StateProxy<TState extends TypedState> {
           object_key: this.serviceKey,
           new_state: Object.fromEntries(entries),
         },
-        (key, value) => {
+        (_key, value) => {
           if (value instanceof Uint8Array) {
             return Array.from(value);
           } else {
             return value;
           }
-        }
+        },
       ),
     });
 
@@ -180,7 +187,3 @@ export class StateProxy<TState extends TypedState> {
     }
   }
 }
-
-export const defaultSerde = <T>(): Serde<T> => {
-  return serde.json as Serde<T>;
-};
