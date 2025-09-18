@@ -1,8 +1,8 @@
 import { beforeEach, expect, describe as suite, test } from "vitest";
+import { Person, type PersonSchemas } from "../../src/bundles/person-bundle";
 import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
 import { registerGlobals } from "../register-globals";
 import { registerMatchers } from "../register-matchers";
-import { Person, type PersonSchemas } from "./person-bundle";
 
 export const setupDatabase = async <T extends any = any>() => {
   return createDatabaseWithSqlocal<T>({
@@ -17,7 +17,7 @@ registerMatchers();
 
 suite("person bundle", () => {
   test("person schema, migration, client", async () => {
-    await Person.migrations.v001_create_persons(db);
+    await Person.migrations.v001_create_table_person(db);
     await Person.clients.writePerson(db, {
       person: Person.schemas.person.parse(Person.fixtures.person()),
     });

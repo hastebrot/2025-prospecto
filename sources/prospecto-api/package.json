@@ -17,7 +17,7 @@
     "@soapbox/logi": "npm:@jsr/soapbox__logi@0.3.0",
     "@types/bun": "^1.2.22",
     "@uwdata/flechette": "^2.2.3",
-    "zod": "^4.1.8"
+    "zod": "^4.1.9"
   },
   "peerDependencies": {
     "typescript": "^5.9.2"

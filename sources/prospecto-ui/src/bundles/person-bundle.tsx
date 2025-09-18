@@ -1,5 +1,6 @@
-import { type Compilable, Kysely } from "kysely";
+import { Kysely } from "kysely";
 import { z } from "zod/v4";
+import { debugSql, type inferSchemaMap } from "./helpers";
 
 export type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
 
@@ -28,7 +29,7 @@ export const Person = {
   get migrations() {
     type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
     return {
-      async v001_create_persons(db: Kysely<PersonSchemas>) {
+      async v001_create_table_person(db: Kysely<PersonSchemas>) {
         return await db.schema
           .createTable("person")
           .addColumn("id", "integer", (it) => it.primaryKey().autoIncrement())
@@ -86,9 +87,3 @@ export const Person = {
     };
   },
 };
-
-export type inferSchemaMap<T extends { [key: string]: z.ZodType }> = {
-  [key in keyof T]: z.infer<T[key]>;
-};
-
-export const debugSql = <T extends Compilable>(it: T): T => (console.debug(it.compile().sql), it);
