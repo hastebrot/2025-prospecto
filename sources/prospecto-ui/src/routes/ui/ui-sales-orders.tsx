@@ -1,5 +1,16 @@
-import { Profiler, useState, type CSSProperties } from "react";
+import { Profiler, useState } from "react";
+import { FormControl, FormLabel } from "../../components/ui-form";
 import { UiIcon } from "../../components/ui-icon";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+} from "../../components/ui-table";
+import { Theme } from "../../components/ui-theme";
+import { ToolbarButton } from "../../components/ui-toolbar";
 import { classNames } from "../../helpers/clsx";
 import { useDocumentTitle } from "../../helpers/react";
 
@@ -801,236 +812,12 @@ export const Badge = (props: { children?: React.ReactNode; color?: string }) => 
   );
 };
 
-export const ToolbarButton = (props: {
-  children?: React.ReactNode;
-  hasIcon?: boolean;
-  isDisabled?: boolean;
-  color?: string;
-  onPress?: () => void;
-  isSelected?: boolean;
-}) => {
-  return (
-    <button
-      type="button"
-      className={classNames(
-        "h-[28px] flex items-center gap-1 px-2 rounded-md text-nowrap select-none",
-        !props.hasIcon && "bg-(--bg-layer)",
-        props.isDisabled && "text-(--fg-muted) cursor-default",
-        !props.isDisabled && "text-(--fg-base) hover:bg-(--bg-layer-active) cursor-pointer",
-        !props.isDisabled && props.isSelected && "!bg-(--bg-accent) hover:!brightness-85",
-        props.color === "green" && "!bg-green-200 hover:brightness-85 saturate-50",
-        props.color === "yellow" && "!bg-yellow-200 hover:brightness-85  saturate-50",
-        props.color === "red" && "!bg-red-200 hover:brightness-85 saturate-50",
-        props.color === "blue" && "!bg-blue-200 hover:brightness-85 saturate-50",
-      )}
-      onClick={props.onPress}
-      disabled={props.isDisabled}
-    >
-      {props.children}
-    </button>
-  );
-};
-
 export const TextSeparator = () => {
   return <span className="whitespace-pre"> - </span>;
 };
 
 export const TextLink = (props: { children?: React.ReactNode }) => {
   return <div className="text-(--fg-accent) hover:underline">{props.children}</div>;
-};
-
-export const FormLabel = (props: { children?: React.ReactNode; decoration?: string }) => {
-  return (
-    <div
-      className={classNames(
-        props.decoration && [
-          "bg-(--bg-highlight) rounded-l-md",
-          "-my-px py-px",
-          "-ml-2 pl-2",
-          "-mr-2.5 pr-2.5",
-        ],
-      )}
-    >
-      <div
-        className={classNames(
-          // "font-semibold text-sm text-(--fg-subtle)",
-          "h-[30px] flex items-center text-nowrap",
-        )}
-      >
-        {props.children}
-      </div>
-    </div>
-  );
-};
-
-export const FormControl = ({
-  ...props
-}: {
-  children?: React.ReactNode;
-  isSearchField?: boolean;
-  isReadOnlyField?: boolean;
-  textAlign?: "left" | "right";
-  decorateAs?: string;
-}) => {
-  props.textAlign = props.textAlign ?? "left";
-
-  return (
-    <div
-      className={classNames(
-        props.decorateAs && [
-          "bg-(--bg-highlight) rounded-r-md",
-          "-my-px py-px",
-          "-ml-2.5 pl-2.5",
-          "-mr-px pr-px",
-        ],
-      )}
-    >
-      <div
-        tabIndex={-1}
-        className={classNames(
-          "h-[30px] flex items-center px-2 cursor-text text-nowrap",
-          props.isReadOnlyField && "border-b border-(--border-base) brightness-95",
-          props.isSearchField &&
-            "!justify-between bg-(--bg-base) border border-(--border-base) rounded-md",
-          props.textAlign === "left" && "text-left justify-start",
-          props.textAlign === "right" && "text-right justify-end",
-          props.decorateAs && "outline-(--border-highlight) outline-2 -outline-offset-1",
-          props.isSearchField &&
-            "focus:outline-(--fg-accent) focus:outline-2 focus:-outline-offset-1",
-        )}
-      >
-        {props.children}
-      </div>
-    </div>
-  );
-};
-
-export const Table = (props: { children?: React.ReactNode }) => {
-  return <table>{props.children}</table>;
-};
-
-export const TableHeader = (props: { children?: React.ReactNode }) => {
-  return (
-    <thead>
-      <tr>{props.children}</tr>
-    </thead>
-  );
-};
-
-export const TableColumn = ({
-  ...props
-}: {
-  children?: React.ReactNode;
-  textAlign?: "left" | "right";
-}) => {
-  props.textAlign = props.textAlign ?? "left";
-  return (
-    <th
-      className={classNames(
-        "p-1.5 pb-4 text-sm text-left align-top",
-        "first:pl-2",
-        "text-(--fg-subtle) bg-(--bg-layer) border-y not-last:border-r border-(--border-base)",
-        props.textAlign === "left" && "pr-4 text-left",
-        props.textAlign === "right" && "pl-4 text-right",
-      )}
-    >
-      {props.children}
-    </th>
-  );
-};
-
-export const TableBody = (props: { children?: React.ReactNode }) => {
-  return <tbody>{props.children}</tbody>;
-};
-
-export const TableRow = (props: { children?: React.ReactNode; decorateAs?: string }) => {
-  return (
-    <tr
-      tabIndex={-1}
-      className={classNames(
-        "relative cursor-pointer odd:bg-(--bg-layer)",
-        "focus:bg-(--bg-accent)",
-        props.decorateAs && [
-          "after:absolute after:left-0 after:top-0 after:h-full after:w-1",
-          "after:bg-(--border-highlight)",
-          "after:pointer-events-none",
-        ],
-      )}
-    >
-      {props.children}
-    </tr>
-  );
-};
-
-export const TableCell = ({
-  ...props
-}: {
-  children?: React.ReactNode;
-  textAlign?: "left" | "right";
-  noPadding?: boolean;
-}) => {
-  props.textAlign = props.textAlign ?? "left";
-  return (
-    <td
-      className={classNames(
-        "relative p-1.5 py-2 text-left align-top text-nowrap",
-        "first:pl-2 last:w-full",
-        "border-y border-(--border-base)",
-        props.textAlign === "left" && "pr-4 text-left",
-        props.textAlign === "right" && "pl-4 text-right",
-        props.noPadding && "pb-0",
-      )}
-    >
-      {props.children}
-    </td>
-  );
-};
-
-export const Theme = (props: { children?: React.ReactNode; theme: "light" | "dark" }) => {
-  const style = {
-    "--color-zinc-350": "color-mix(in oklch, var(--color-zinc-300), var(--color-zinc-400))",
-  } as CSSProperties;
-  const lightMode = {
-    "--bg-base": "var(--color-white)",
-    "--bg-layer": "var(--color-zinc-100)",
-    "--bg-layer-active": "var(--color-zinc-200)",
-    "--fg-base": "var(--color-zinc-900)",
-    "--fg-subtle": "var(--color-zinc-500)",
-    "--fg-muted": "var(--color-zinc-350)",
-    "--border-base": "var(--color-zinc-200)",
-    "--border-active": "var(--color-zinc-300)",
-    "--fg-accent": "var(--color-blue-500)",
-    "--bg-accent": "var(--color-blue-100)",
-    "--border-accent": "var(--color-blue-200)",
-    "--fg-highlight": "var(--color-amber-600)",
-    "--bg-highlight": "var(--color-amber-200)",
-    "--border-highlight": "var(--color-amber-400)",
-  } as CSSProperties;
-  const darkMode = {
-    "--bg-base": "var(--color-neutral-900)",
-    "--bg-layer": "var(--color-neutral-800)",
-    "--bg-layer-active": "var(--color-neutral-700)",
-    "--fg-base": "var(--color-neutral-100)",
-    "--fg-subtle": "var(--color-neutral-300)",
-    "--fg-muted": "var(--color-neutral-500)",
-    "--border-base": "var(--color-neutral-700)",
-    "--border-active": "var(--color-neutral-600)",
-    "--fg-accent": "var(--color-sky-300)",
-    "--bg-accent": "var(--color-slate-700)",
-    "--border-accent": "var(--color-slate-500)",
-    "--fg-highlight": "var(--color-yellow-300)",
-    "--bg-highlight": "var(--color-yellow-300)",
-    "--border-highlight": "var(--color-yellow-400)",
-  } as CSSProperties;
-  return (
-    <div
-      className="font-sans font-normal text-base grid"
-      style={{ ...style, ...(props.theme === "light" ? lightMode : darkMode) }}
-      data-theme={props.theme}
-    >
-      {props.children}
-    </div>
-  );
 };
 
 export type ViewportProps = {
