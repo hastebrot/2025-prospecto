@@ -1,0 +1,14 @@
+- story ticket (dev) checklist
+	- what does a story need to be ready, what does it need to be done.
+- guide topic (doc) checklist
+	- what we need to include and in which format, e.g. screen references, or main folders prefixed with "user-" or "dev-" or "admin-"
+- frontend component checklist
+	- it needs tests, it needs name property (sometimes), which structure?
+	- screens or panels for collections, or for collection items
+	- tests (using name as aria-label) and storybook
+	- remove `src/` and `test/` from vite, i.e. `components/` and `routes/` folder on top-level
+	- put test suites `*.test.tsx` to production code `*.tsx` 
+- backend bundle checklist
+	- schemas + data fixtures, db migrations + clients, panels + endpoints + routes
+- installation checklist
+	- what needs to be preinstalled on which operating system, e.g. linux for windows, docker, bun, git, webbrowser

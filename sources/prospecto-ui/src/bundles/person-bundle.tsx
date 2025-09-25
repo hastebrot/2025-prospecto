@@ -1,6 +1,7 @@
 import { Kysely } from "kysely";
 import { z } from "zod/v4";
-import { debugSql, type inferSchemaMap } from "./helpers";
+import { Sqlocal } from "../helpers/sqlocal";
+import { type inferSchemaMap } from "../helpers/zod";
 
 export type PersonSchemas = inferSchemaMap<typeof Person.schemas>;
 
@@ -58,7 +59,7 @@ export const Person = {
           .insertInto("person")
           .values(person)
           .onConflict((it) => it.column("id").doUpdateSet(person))
-          .$call(debugSql)
+          .$call(Sqlocal.debugSql)
           .execute();
         return {};
       },

@@ -77,16 +77,16 @@
         "kysely-plugin-serialize": "^0.8.2",
         "mobx": "^6.13.7",
         "mobx-react-lite": "^4.1.0",
-        "nanoid": "^5.1.5",
+        "nanoid": "^5.1.6",
         "nanoid-dictionary": "^5.0.0",
         "react-aria-components": "^1.12.2",
         "react-router": "^7.9.1",
         "sqlocal": "^0.14.2",
         "tailwindcss": "^4.1.13",
         "typescript": "^5.9.2",
-        "vite": "npm:rolldown-vite@^7.1.11",
+        "vite": "npm:rolldown-vite@^7.1.12",
         "vitest": "^3.2.4",
-        "zod": "^4.1.9",
+        "zod": "^4.1.11",
       },
     },
   },
@@ -803,9 +803,7 @@
 
     "yallist": ["yallist@5.0.0", "", {}, "sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw=="],
 
-    "zod": ["zod@4.1.9", "", {}, "sha512-HI32jTq0AUAC125z30E8bQNz0RQ+9Uc+4J7V97gLYjZVKRjeydPgGt6dvQzFrav7MYOUGFqqOGiHpA/fdbd0cQ=="],
-
-    "@prospecto/prospecto-ui/zod": ["zod@4.1.11", "", {}, "sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg=="],
+    "zod": ["zod@4.1.11", "", {}, "sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg=="],
 
     "@tailwindcss/oxide-wasm32-wasi/@emnapi/core": ["@emnapi/core@1.5.0", "", { "dependencies": { "@emnapi/wasi-threads": "1.1.0", "tslib": "^2.4.0" }, "bundled": true }, "sha512-sbP8GzB1WDzacS8fgNPpHlp6C9VZe+SJP3F90W9rLemaQj2PzIuTEl1qDOYQf58YIpyjViI24y9aPWCjEzY2cg=="],
 

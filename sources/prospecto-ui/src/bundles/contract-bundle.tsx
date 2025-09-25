@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { z } from "zod/v4";
 import { throwHttpError } from "../helpers/error";
-import { type inferSchemaMap } from "./helpers";
+import { type inferSchemaMap } from "../helpers/zod";
 
 export type ContractSchemas = inferSchemaMap<typeof Contract.schemas>;
 
@@ -53,9 +53,15 @@ export const Contract = {
     type ReadContracts = {
       Params: { limit?: number };
     };
+    type DeleteContract = {
+      Params: { contractId: number };
+    };
 
     return {
-      async writeContract(db: Kysely<ContractSchemas>, params: WriteContract["Params"]) {
+      async writeContract(
+        db: Kysely<ContractSchemas>,
+        params: WriteContract["Params"],
+      ) {
         const contract = Contract.schemas.contract.parse(
           params.contract ?? throwHttpError(400, "contract required"),
         );
@@ -67,10 +73,15 @@ export const Contract = {
         return {};
       },
 
-      async readContract(db: Kysely<ContractSchemas>, params: ReadContract["Params"]) {
+      async readContract(
+        db: Kysely<ContractSchemas>,
+        params: ReadContract["Params"],
+      ) {
+        const contractId =
+          params.contractId ?? throwHttpError(400, "contractId required");
         const r = await db
           .selectFrom("contract")
-          .where("id", "=", params.contractId ?? throwHttpError(400, "contractId required"))
+          .where("id", "=", contractId)
           .select(["id", "title", "body"])
           .limit(1)
           .executeTakeFirst();
@@ -80,26 +91,47 @@ export const Contract = {
         return { contract };
       },
 
-      async readContracts(db: Kysely<ContractSchemas>, params: ReadContracts["Params"]) {
+      async readContracts(
+        db: Kysely<ContractSchemas>,
+        params: ReadContracts["Params"],
+      ) {
         const r = await db
           .selectFrom("contract")
           .orderBy("id", "asc")
           .select(["id", "title", "body"])
-          .$call((it) => (params.limit !== undefined ? it.limit(params.limit) : it))
+          .$call((it) =>
+            params.limit !== undefined ? it.limit(params.limit) : it,
+          )
           .execute();
         const contracts = Contract.schemas.contract.array().parse(r);
         return { contracts };
       },
+
+      async deleteContract(
+        db: Kysely<ContractSchemas>,
+        params: DeleteContract["Params"],
+      ) {
+        const contractId =
+          params.contractId ?? throwHttpError(400, "contractId required");
+        await db.deleteFrom("contract").where("id", "=", contractId).execute();
+        return {};
+      },
     };
   },
 
-  get admin() {
-    type ContractTableProps = { contracts: ContractSchemas["contract"][] };
-    type ContractFormProps = { contract: ContractSchemas["contract"] };
+  get components() {
+    type ContractTableProps = {
+      contracts: ContractSchemas["contract"][];
+    };
+    type ContractFormProps = {
+      contract: ContractSchemas["contract"];
+    };
 
     return {
       ContractTable: (props: ContractTableProps) => {
-        const [contracts, setContracts] = useState<ContractSchemas["contract"][]>([]);
+        const [contracts, setContracts] = useState<
+          ContractSchemas["contract"][]
+        >([]);
         useEffect(() => {
           setContracts(props.contracts);
         }, [props.contracts]);
@@ -117,8 +149,12 @@ export const Contract = {
               {contracts.map((contract, index) => (
                 <tr key={contract.id}>
                   <td aria-label={`contract[${index}][id]`}>{contract.id}</td>
-                  <td aria-label={`contract[${index}][title]`}>{contract.title}</td>
-                  <td aria-label={`contract[${index}][body]`}>{contract.body}</td>
+                  <td aria-label={`contract[${index}][title]`}>
+                    {contract.title}
+                  </td>
+                  <td aria-label={`contract[${index}][body]`}>
+                    {contract.body}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -144,13 +180,17 @@ export const Contract = {
             <input
               aria-label="contract[title]"
               value={form.contract.title}
-              onChange={action((event) => (form.contract.title = event.target.value))}
+              onChange={action(
+                (event) => (form.contract.title = event.target.value),
+              )}
               required
             />
             <input
               aria-label="contract[body]"
               value={form.contract.body}
-              onChange={action((event) => (form.contract.body = event.target.value))}
+              onChange={action(
+                (event) => (form.contract.body = event.target.value),
+              )}
               required
             />
           </form>

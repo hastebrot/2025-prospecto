@@ -1,19 +1,20 @@
 import { beforeEach, expect, describe as suite, test } from "vitest";
-import { Person, type PersonSchemas } from "../../src/bundles/person-bundle";
-import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
-import { registerGlobals } from "../register-globals";
-import { registerMatchers } from "../register-matchers";
+import { Sqlocal } from "../helpers/sqlocal";
+import { registerGlobals } from "../tests/register-globals";
+import { registerMatchers } from "../tests/register-matchers";
+import { Person, type PersonSchemas } from "./person-bundle";
+
+registerGlobals();
+registerMatchers();
 
 export const setupDatabase = async <T extends any = any>() => {
-  return createDatabaseWithSqlocal<T>({
+  return Sqlocal.createDatabase<T>({
     databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
   });
 };
 
 const { db, deleteDatabaseFile } = await setupDatabase<PersonSchemas>();
 beforeEach(deleteDatabaseFile);
-registerGlobals();
-registerMatchers();
 
 suite("person bundle", () => {
   test("person schema, migration, client", async () => {

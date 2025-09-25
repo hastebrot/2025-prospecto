@@ -1,21 +1,22 @@
 import { cleanup, render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { beforeEach, expect, describe as suite, test } from "vitest";
-import { Contract, type ContractSchemas } from "../../src/bundles/contract-bundle";
-import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
-import { registerGlobals } from "../register-globals";
-import { registerMatchers } from "../register-matchers";
+import { Sqlocal } from "../helpers/sqlocal";
+import { registerGlobals } from "../tests/register-globals.ts";
+import { registerMatchers } from "../tests/register-matchers";
+import { Contract, type ContractSchemas } from "./contract-bundle";
+
+registerGlobals();
+registerMatchers();
 
 export const setupDatabase = async <T extends any = any>() => {
-  return createDatabaseWithSqlocal<T>({
+  return Sqlocal.createDatabase<T>({
     databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
   });
 };
 
 const { db, deleteDatabaseFile } = await setupDatabase<ContractSchemas>();
 beforeEach(deleteDatabaseFile);
-registerGlobals();
-registerMatchers();
 
 suite("contract bundle", () => {
   beforeEach(async () => {
@@ -58,7 +59,7 @@ suite("contract bundle", () => {
   test("contract table", async () => {
     cleanup();
     const contracts = await Contract.clients.readContracts(db, { limit: 2 });
-    const screen = render(<Contract.admin.ContractTable contracts={contracts.contracts} />);
+    const screen = render(<Contract.components.ContractTable contracts={contracts.contracts} />);
 
     const contractTable = screen.getByRole("table");
     await waitFor(() => contractTable);
@@ -79,7 +80,7 @@ suite("contract bundle", () => {
   test("contract form", async () => {
     cleanup();
     const contract = await Contract.clients.readContract(db, { contractId: 1 });
-    const screen = render(<Contract.admin.ContractForm contract={contract.contract} />);
+    const screen = render(<Contract.components.ContractForm contract={contract.contract} />);
     const user = userEvent.setup({ document: global.document });
 
     const contractForm = screen.getByRole("form");

@@ -43,7 +43,7 @@ export const TableRow = (props: { children?: React.ReactNode; decorateAs?: strin
     <tr
       tabIndex={-1}
       className={classNames(
-        "relative cursor-pointer odd:bg-(--bg-layer)",
+        "relative cursor-pointer even:bg-(--bg-layer)",
         "focus:bg-(--bg-accent)",
         props.decorateAs && [
           "after:absolute after:left-0 after:top-0 after:h-full after:w-1",

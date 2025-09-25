@@ -419,7 +419,7 @@ const ItemLayout = () => {
             <FormControl isReadOnlyField>Food Order</FormControl>
           </div>
         </div>
-        <div className="p-4 rounded-lg border border-(--border-base) bg-(--bg-layer)">
+        <div className="hidden p-4 rounded-lg border border-(--border-base) bg-(--bg-layer)">
           <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5">
             <FormLabel>Ordered Qty.</FormLabel>
             <FormControl isReadOnlyField textAlign="right">

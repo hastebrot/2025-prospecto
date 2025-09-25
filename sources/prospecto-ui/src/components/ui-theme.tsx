@@ -32,9 +32,9 @@ export const Theme = (props: { children?: React.ReactNode; theme: "light" | "dar
     "--fg-accent": "var(--color-sky-300)",
     "--bg-accent": "var(--color-slate-700)",
     "--border-accent": "var(--color-slate-500)",
-    "--fg-highlight": "var(--color-yellow-300)",
-    "--bg-highlight": "var(--color-yellow-300)",
-    "--border-highlight": "var(--color-yellow-400)",
+    "--fg-highlight": "var(--color-amber-600)",
+    "--bg-highlight": "var(--color-amber-400)",
+    "--border-highlight": "var(--color-amber-400)",
   } as CSSProperties;
   return (
     <div
