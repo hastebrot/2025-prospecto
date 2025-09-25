@@ -1,13 +1,13 @@
 import { type Generated, Kysely, sql } from "kysely";
 import { beforeEach, expect, test } from "vitest";
-import { Fmt } from "../../src/helpers/fmt";
-import { createDatabaseWithSqlocal } from "../../src/helpers/sqlocal";
+import { Fmt } from "../../helpers/fmt";
+import { Sqlocal } from "../../helpers/sqlocal";
 
 function randNumber(options: { min: number; max: number }) {
   return options.min + Math.floor(Math.random() * (options.max - options.min));
 }
 
-const database = createDatabaseWithSqlocal({
+const database = Sqlocal.createDatabase({
   databasePath: process.env.NODE_ENV === "test" ? ":memory:" : ":localStorage:",
 });
 const skipBenchmarks = false;
